@@ -13,6 +13,10 @@ import (
 	"github.com/yvv4git/go-pkg-safe/internal/usecases"
 )
 
+const (
+	defaultVersionThreshould = 14 * 24 * time.Hour
+)
+
 func main() {
 	log := logger.SetupLoggerWithLevel(slog.LevelInfo)
 
@@ -26,7 +30,7 @@ func main() {
 	ctx, cancel := signal.NotifyContext(context.Background(), os.Interrupt, syscall.SIGTERM)
 	defer cancel()
 
-	if err := ucUpdater.Update(ctx, 14*24*time.Hour); err != nil {
+	if err := ucUpdater.Update(ctx, defaultVersionThreshould); err != nil {
 		log.Error(err.Error())
 	}
 
