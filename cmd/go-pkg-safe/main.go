@@ -8,17 +8,23 @@ import (
 	"syscall"
 	"time"
 
+	"github.com/alecthomas/kingpin"
 	"github.com/yvv4git/go-pkg-safe/internal/infrastructure/commands"
 	"github.com/yvv4git/go-pkg-safe/internal/infrastructure/logger"
 	"github.com/yvv4git/go-pkg-safe/internal/usecases"
 )
 
-const (
-	defaultVersionThreshould = 14 * 24 * time.Hour
-)
-
 func main() {
 	log := logger.SetupLoggerWithLevel(slog.LevelInfo)
+
+	versionThresholdDays := kingpin.Flag("version-threshold", "Threshold in days for module versions").
+		Short('t').
+		Default("14").
+		Int()
+
+	kingpin.Parse()
+
+	versionThreshold := time.Duration(*versionThresholdDays) * 24 * time.Hour
 
 	ucUpdater := usecases.NewUpdater(log, usecases.ParamsNewUpdater{
 		FetchModules:          commands.FetchModules,
@@ -30,7 +36,7 @@ func main() {
 	ctx, cancel := signal.NotifyContext(context.Background(), os.Interrupt, syscall.SIGTERM)
 	defer cancel()
 
-	if err := ucUpdater.Update(ctx, defaultVersionThreshould); err != nil {
+	if err := ucUpdater.Update(ctx, versionThreshold); err != nil {
 		log.Error(err.Error())
 	}
 
