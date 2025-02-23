@@ -40,5 +40,5 @@ func main() {
 		log.Error(err.Error())
 	}
 
-	log.Info("All modules updated successfully")
+	log.Info("All modules updated")
 }
