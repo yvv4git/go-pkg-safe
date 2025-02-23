@@ -4,7 +4,7 @@ import (
 	"testing"
 
 	"github.com/stretchr/testify/require"
-	"github.com/yvv4git/go-pkg-safe/internal/infrastructure/commands"
+	"github.com/yvv4git/go-safe-upd/internal/infrastructure/commands"
 )
 
 func TestFetchVersionsList(t *testing.T) {

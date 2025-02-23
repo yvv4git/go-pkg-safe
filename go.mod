@@ -1,4 +1,4 @@
-module github.com/yvv4git/go-pkg-safe
+module github.com/yvv4git/go-safe-upd
 
 go 1.24
 

@@ -4,11 +4,11 @@ import (
 	"testing"
 
 	"github.com/stretchr/testify/require"
-	"github.com/yvv4git/go-pkg-safe/internal/infrastructure/commands"
+	"github.com/yvv4git/go-safe-upd/internal/infrastructure/commands"
 )
 
 func TestFetchModules(t *testing.T) {
-	const currentModule = "github.com/yvv4git/go-pkg-safe"
+	const currentModule = "github.com/yvv4git/go-safe-upd"
 
 	modules, err := commands.FetchModules()
 	require.NoError(t, err, "FetchModules should not return an error")

@@ -9,9 +9,9 @@ import (
 	"time"
 
 	"github.com/alecthomas/kingpin"
-	"github.com/yvv4git/go-pkg-safe/internal/infrastructure/commands"
-	"github.com/yvv4git/go-pkg-safe/internal/infrastructure/logger"
-	"github.com/yvv4git/go-pkg-safe/internal/usecases"
+	"github.com/yvv4git/go-safe-upd/internal/infrastructure/commands"
+	"github.com/yvv4git/go-safe-upd/internal/infrastructure/logger"
+	"github.com/yvv4git/go-safe-upd/internal/usecases"
 )
 
 func main() {
