@@ -39,8 +39,6 @@ func IsSafityModuleVersion(module, version string, timeThreshold time.Duration) 
 		return false, err
 	}
 
-	fmt.Println("===> Published date: ", pubDate.String())
-
 	elapsed := time.Since(pubDate)
 	if elapsed >= timeThreshold {
 		return true, nil
